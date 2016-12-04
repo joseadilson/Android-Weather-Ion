@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText edBuscaCidade;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         edBuscaCidade = (EditText)findViewById(R.id.edBuscaCidade);
 
+
     }
 
     public void onClickBuscar(View view) {
         String cidade = edBuscaCidade.getText().toString();
+        final TextView lbLocalidade  = (TextView)findViewById(R.id.lbLocalidade);
+        final TextView lbTemperaturaDia = (TextView)findViewById(R.id.lbTemperatura);
+        final TextView lbMaxDia = (TextView)findViewById(R.id.lbMax);
+        final TextView lbMinDia = (TextView)findViewById(R.id.lbMin);
 
         if (cidade.trim().isEmpty()) {
             Toast.makeText(this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
@@ -47,17 +54,20 @@ public class MainActivity extends AppCompatActivity {
                                 JsonObject object9 = object2.get("item").getAsJsonObject();
                                 JsonObject object10 = object9.get("condition").getAsJsonObject();
 
-
                                 //Local
-                                Toast.makeText(MainActivity.this, "Cidade: "+object3.get("city").getAsString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(MainActivity.this, "Região: "+object3.get("region").getAsString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(MainActivity.this, "País: "+object3.get("country").getAsString(), Toast.LENGTH_SHORT).show();
+                                String[] local = {object3.get("city").getAsString().toString()," -",object3.get("region").getAsString().toString(),", ",object3.get("country").getAsString().toString()};
+                                String resultadoLocal = "";
+                                for (int a = 0; a < local.length; a++) {
+                                    resultadoLocal += local[a];
+                                    lbLocalidade.setText(resultadoLocal);
+                                }
                                 //
 
-                                //Temperatura, data e descrição do tempo
-                                Toast.makeText(MainActivity.this, "Date: "+object10.get("date").getAsString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(MainActivity.this, "Temperatura: "+object10.get("temp").getAsString(), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(MainActivity.this, "Desc: "+object10.get("text").getAsString(), Toast.LENGTH_SHORT).show();
+
+
+//                                Toast.makeText(MainActivity.this, "Date: "+object10.get("date").getAsString(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(MainActivity.this, "Temperatura: "+object10.get("temp").getAsString(), Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(MainActivity.this, "Desc: "+object10.get("text").getAsString(), Toast.LENGTH_SHORT).show();
                                 //
 
                                 //percorrer os dias da semana
@@ -72,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
 //                                    JsonObject object16 = forecast.get(5).getAsJsonObject();
 //                                    JsonObject object17 = forecast.get(6).getAsJsonObject();
 //
-//                                    Toast.makeText(MainActivity.this, "Teste"+object10, Toast.LENGTH_SHORT).show();
-
-
-//                                    Toast.makeText(MainActivity.this, "" + object11, Toast.LENGTH_SHORT).show();
+//                                    //Temperatura, data e descrição do tempo
+                                    lbTemperaturaDia.setText(object10.get("temp").getAsString()+"ºF");
+                                    lbMaxDia.setText(object11.get("high").getAsString());
+                                    lbMinDia.setText(object11.get("low").getAsString());
                                 }
                             } else {
                                 Toast.makeText(MainActivity.this, "ERRO: " + e, Toast.LENGTH_SHORT).show();
