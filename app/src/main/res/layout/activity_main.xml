@@ -56,8 +56,28 @@
             android:layout_marginBottom="5dp"
             card_view:cardCornerRadius="4dp">
 
+            <TextView
+                android:id="@+id/edLocalidade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="36dp"
+                android:layout_gravity="left"
+                android:text="Cianorte, Brazil-PR"/>
 
+            <TextView
+                android:id="@+id/lbTemperatura"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:layout_gravity="left"
+                android:textSize="82dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:text="30ºC"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
 
         </android.support.v7.widget.CardView>

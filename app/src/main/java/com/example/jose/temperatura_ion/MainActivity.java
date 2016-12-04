@@ -45,26 +45,37 @@ public class MainActivity extends AppCompatActivity {
                                 JsonObject object2 = object1.get("channel").getAsJsonObject();
                                 JsonObject object3 = object2.get("location").getAsJsonObject();
                                 JsonObject object9 = object2.get("item").getAsJsonObject();
+                                JsonObject object10 = object9.get("condition").getAsJsonObject();
 
+
+                                //Local
+                                Toast.makeText(MainActivity.this, "Cidade: "+object3.get("city").getAsString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Região: "+object3.get("region").getAsString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "País: "+object3.get("country").getAsString(), Toast.LENGTH_SHORT).show();
+                                //
+
+                                //Temperatura, data e descrição do tempo
+                                Toast.makeText(MainActivity.this, "Date: "+object10.get("date").getAsString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Temperatura: "+object10.get("temp").getAsString(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Desc: "+object10.get("text").getAsString(), Toast.LENGTH_SHORT).show();
+                                //
+
+                                //percorrer os dias da semana
                                 JsonArray jsonArray = object9.get("forecast").getAsJsonArray();
                                 for (int i = 0; i < jsonArray.size(); i++) {
                                     JsonArray forecast = jsonArray.getAsJsonArray();
                                     JsonObject object11 = forecast.get(0).getAsJsonObject();
-                                    JsonObject object12 = forecast.get(1).getAsJsonObject();
-                                    JsonObject object13 = forecast.get(2).getAsJsonObject();
-                                    JsonObject object14 = forecast.get(3).getAsJsonObject();
-                                    JsonObject object15 = forecast.get(4).getAsJsonObject();
-                                    JsonObject object16 = forecast.get(5).getAsJsonObject();
-                                    JsonObject object17 = forecast.get(6).getAsJsonObject();
+//                                    JsonObject object12 = forecast.get(1).getAsJsonObject();
+//                                    JsonObject object13 = forecast.get(2).getAsJsonObject();
+//                                    JsonObject object14 = forecast.get(3).getAsJsonObject();
+//                                    JsonObject object15 = forecast.get(4).getAsJsonObject();
+//                                    JsonObject object16 = forecast.get(5).getAsJsonObject();
+//                                    JsonObject object17 = forecast.get(6).getAsJsonObject();
+//
+//                                    Toast.makeText(MainActivity.this, "Teste"+object10, Toast.LENGTH_SHORT).show();
 
 
 //                                    Toast.makeText(MainActivity.this, "" + object11, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(MainActivity.this, "" + object12, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(MainActivity.this, "" + object13, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(MainActivity.this, "" + object14, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(MainActivity.this, "" + object15, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(MainActivity.this, "" + object16, Toast.LENGTH_SHORT).show();
-//                                    Toast.makeText(MainActivity.this, "" + object17, Toast.LENGTH_SHORT).show();
                                 }
                             } else {
                                 Toast.makeText(MainActivity.this, "ERRO: " + e, Toast.LENGTH_SHORT).show();
