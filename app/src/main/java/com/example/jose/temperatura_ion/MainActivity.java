@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
                                 JsonObject object = result.get("query").getAsJsonObject();
                                 JsonObject object1 = object.get("results").getAsJsonObject();
                                 JsonObject object2 = object1.get("channel").getAsJsonObject();
+                                JsonObject object3 = object2.get("location").getAsJsonObject();
                                 JsonObject object9 = object2.get("item").getAsJsonObject();
 
                                 JsonArray jsonArray = object9.get("forecast").getAsJsonArray();
@@ -57,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
                                     JsonObject object17 = forecast.get(6).getAsJsonObject();
 
 
-                                    Toast.makeText(MainActivity.this, "" + object11, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(MainActivity.this, "" + object12, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(MainActivity.this, "" + object13, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(MainActivity.this, "" + object14, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(MainActivity.this, "" + object15, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(MainActivity.this, "" + object16, Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(MainActivity.this, "" + object17, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object11, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object12, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object13, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object14, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object15, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object16, Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(MainActivity.this, "" + object17, Toast.LENGTH_SHORT).show();
                                 }
                             } else {
                                 Toast.makeText(MainActivity.this, "ERRO: " + e, Toast.LENGTH_SHORT).show();
