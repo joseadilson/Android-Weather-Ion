@@ -12,6 +12,8 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     public void onClickBuscar(View view) {
         String cidade = edBuscaCidade.getText().toString();
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView lbDescSemana = (TextView)findViewById(R.id.lbDescSemana);
         final TextView lbDescSemanaSeg = (TextView)findViewById(R.id.lbDescSemanaSeg);
         final TextView lbDescSemanaTer = (TextView)findViewById(R.id.lbDescSemanaTer);
+
+
 
         if (cidade.trim().isEmpty()) {
             Toast.makeText(this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
@@ -92,36 +97,56 @@ public class MainActivity extends AppCompatActivity {
                                     JsonObject object12 = forecast.get(1).getAsJsonObject();
                                     JsonObject object13 = forecast.get(2).getAsJsonObject();
                                     JsonObject object14 = forecast.get(3).getAsJsonObject();
-//                                    JsonObject object15 = forecast.get(4).getAsJsonObject();
-//                                    JsonObject object16 = forecast.get(5).getAsJsonObject();
-//                                    JsonObject object17 = forecast.get(6).getAsJsonObject();
-//
-//                                  //Temperatura, descrição do tempo do Dia
-                                    lbTemperaturaDia.setText(object10.get("temp").getAsString()+"ºf");
-                                    lbMaxDia.setText(object11.get("high").getAsString()+"º");
-                                    lbMinDia.setText(object11.get("low").getAsString()+"º");
+
+                                    //Conversão
+                                    DecimalFormat formato = new DecimalFormat("##");
+                                    Double converter  = Double.valueOf(object10.get("temp").getAsString());
+                                    Double converter1 = Double.valueOf(object11.get("high").getAsString());
+                                    Double converter2 = Double.valueOf(object11.get("low").getAsString());
+                                    Double converter3 = Double.valueOf(object12.get("low").getAsString());
+                                    Double converter4 = Double.valueOf(object12.get("high").getAsString());
+                                    Double converter5 = Double.valueOf(object13.get("low").getAsString());
+                                    Double converter6 = Double.valueOf(object13.get("high").getAsString());
+                                    Double converter7 = Double.valueOf(object14.get("low").getAsString());
+                                    Double converter8 = Double.valueOf(object14.get("high").getAsString());
+
+                                    Double calcular   = (converter  - 32) /1.8;
+                                    Double calcular1  = (converter1 - 32) /1.8;
+                                    Double calcular2  = (converter2 - 32) /1.8;
+                                    Double calcular3  = (converter3 - 32) /1.8;
+                                    Double calcular4  = (converter4 - 32) /1.8;
+                                    Double calcular5  = (converter5 - 32) /1.8;
+                                    Double calcular6  = (converter6 - 32) /1.8;
+                                    Double calcular7  = (converter7 - 32) /1.8;
+                                    Double calcular8  = (converter8 - 32) /1.8;
+                                    //
+
+                                    //Temperatura, descrição do tempo do Dia
+                                    lbTemperaturaDia.setText(formato.format(calcular)+"ºc");
+                                    lbMaxDia.setText(formato.format(calcular1)+"º");
+                                    lbMinDia.setText(formato.format(calcular2)+"º");
                                     lbDescDia.setText(object10.get("text").getAsString());
                                     //
 
                                     //Primeiro Dia
                                     lbDataSemana.setText(object12.get("date").getAsString());
                                     lbDiaSemana.setText(object12.get("day").getAsString());
-                                    lbMinSemana.setText(object12.get("low").getAsString()+"º");
-                                    lbMaxSemana.setText(object12.get("high").getAsString()+"º");
+                                    lbMinSemana.setText(formato.format(calcular3)+"º");
+                                    lbMaxSemana.setText(formato.format(calcular4)+"º");
                                     lbDescSemana.setText(object12.get("text").getAsString());
                                     //
                                     //Segundo Dia
                                     lbDataSemanaSeg.setText(object13.get("date").getAsString());
                                     lbDiaSemanaSeg.setText(object13.get("day").getAsString());
-                                    lbMinSemanaSeg.setText(object13.get("low").getAsString()+"º");
-                                    lbMaxSemanaSeg.setText(object13.get("high").getAsString()+"º");
+                                    lbMinSemanaSeg.setText(formato.format(calcular5)+"º");
+                                    lbMaxSemanaSeg.setText(formato.format(calcular6)+"º");
                                     lbDescSemanaSeg.setText(object13.get("text").getAsString());
                                     //
                                     //Terceiro Dia
                                     lbDataSemanaTer.setText(object14.get("date").getAsString());
                                     lbDiaSemanaTerc.setText(object14.get("day").getAsString());
-                                    lbMinSemanaTer.setText(object14.get("low").getAsString()+"º");
-                                    lbMaxSemanaTer.setText(object14.get("high").getAsString()+"º");
+                                    lbMinSemanaTer.setText(formato.format(calcular7)+"º");
+                                    lbMaxSemanaTer.setText(formato.format(calcular8)+"º");
                                     lbDescSemanaTer.setText(object14.get("text").getAsString());
                                     //
                                 }
