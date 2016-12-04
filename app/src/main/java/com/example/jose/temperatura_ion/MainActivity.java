@@ -97,31 +97,31 @@ public class MainActivity extends AppCompatActivity {
 //                                    JsonObject object17 = forecast.get(6).getAsJsonObject();
 //
 //                                  //Temperatura, descrição do tempo do Dia
-                                    lbTemperaturaDia.setText(object10.get("temp").getAsString()+"ºF");
-                                    lbMaxDia.setText(object11.get("high").getAsString());
-                                    lbMinDia.setText(object11.get("low").getAsString());
+                                    lbTemperaturaDia.setText(object10.get("temp").getAsString()+"ºf");
+                                    lbMaxDia.setText(object11.get("high").getAsString()+"º");
+                                    lbMinDia.setText(object11.get("low").getAsString()+"º");
                                     lbDescDia.setText(object10.get("text").getAsString());
                                     //
 
                                     //Primeiro Dia
                                     lbDataSemana.setText(object12.get("date").getAsString());
                                     lbDiaSemana.setText(object12.get("day").getAsString());
-                                    lbMinSemana.setText(object12.get("low").getAsString());
-                                    lbMaxSemana.setText(object12.get("high").getAsString());
+                                    lbMinSemana.setText(object12.get("low").getAsString()+"º");
+                                    lbMaxSemana.setText(object12.get("high").getAsString()+"º");
                                     lbDescSemana.setText(object12.get("text").getAsString());
                                     //
                                     //Segundo Dia
                                     lbDataSemanaSeg.setText(object13.get("date").getAsString());
                                     lbDiaSemanaSeg.setText(object13.get("day").getAsString());
-                                    lbMinSemanaSeg.setText(object13.get("low").getAsString());
-                                    lbMaxSemanaSeg.setText(object13.get("high").getAsString());
+                                    lbMinSemanaSeg.setText(object13.get("low").getAsString()+"º");
+                                    lbMaxSemanaSeg.setText(object13.get("high").getAsString()+"º");
                                     lbDescSemanaSeg.setText(object13.get("text").getAsString());
                                     //
                                     //Terceiro Dia
                                     lbDataSemanaTer.setText(object14.get("date").getAsString());
                                     lbDiaSemanaTerc.setText(object14.get("day").getAsString());
-                                    lbMinSemanaTer.setText(object14.get("low").getAsString());
-                                    lbMaxSemanaTer.setText(object14.get("high").getAsString());
+                                    lbMinSemanaTer.setText(object14.get("low").getAsString()+"º");
+                                    lbMaxSemanaTer.setText(object14.get("high").getAsString()+"º");
                                     lbDescSemanaTer.setText(object14.get("text").getAsString());
                                     //
                                 }

@@ -91,12 +91,11 @@
 
                     <TextView
                         android:id="@+id/lbTemperatura"
-                        android:layout_marginTop="70dp"
+                        android:layout_marginTop="68dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="82dp"
-                        android:fontFamily="sans-serif-smallcaps"
-                        android:text="0"/>
+                        android:text="0ºf"/>
                 <TextView
                     android:id="@+id/lbDescDia"
                     android:layout_width="match_parent"
@@ -127,23 +126,33 @@
                     card_view:cardCornerRadius="4dp">
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:gravity="left|center"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <TextView
                             android:id="@+id/lbDataSemana"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="18dp"
                             android:text="Dia "/>
                         <TextView
                             android:id="@+id/lbDiaSemana"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Semana" />
+                            android:textSize="16dp"
+                            android:text="Semana" />
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/lbDescSemana"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Condição" />
+
                     <LinearLayout
-                        android:layout_marginTop="20dp"
+                        android:gravity="center|right"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -165,16 +174,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/lbDescSemana"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:text="Condição" />
-
-
-
                 </android.support.v7.widget.CardView>
 
                 <!--2-->
@@ -187,23 +186,33 @@
                     card_view:cardCornerRadius="4dp">
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:gravity="left|center"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <TextView
                             android:id="@+id/lbDataSemanaSeg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="18dp"
                             android:text="Dia "/>
                         <TextView
                             android:id="@+id/lbDiaSemanaSeg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Semana" />
+                            android:textSize="16dp"
+                            android:text="Semana" />
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/lbDescSemanaSeg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Condição" />
+
                     <LinearLayout
-                        android:layout_marginTop="20dp"
+                        android:gravity="center|right"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -226,12 +235,7 @@
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/lbDescSemanaSeg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:text="Condição" />
+
 
                 </android.support.v7.widget.CardView>
 
@@ -245,23 +249,33 @@
                     card_view:cardCornerRadius="4dp">
 
                     <LinearLayout
-                        android:orientation="horizontal"
+                        android:gravity="left|center"
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
                         <TextView
                             android:id="@+id/lbDataSemanaTer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="18dp"
                             android:text="Dia "/>
                         <TextView
                             android:id="@+id/lbDiaSemanaTer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" Semana" />
+                            android:textSize="16dp"
+                            android:text="Semana" />
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/lbDescSemanaTer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Condição" />
+
                     <LinearLayout
-                        android:layout_marginTop="20dp"
+                        android:gravity="center|right"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
@@ -284,12 +298,7 @@
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/lbDescSemanaTer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:text="Condição" />
+
 
                 </android.support.v7.widget.CardView>
 
