@@ -16,9 +16,7 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-
     EditText edBuscaCidade;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickBuscar(View view) {
-        String cidade = edBuscaCidade.getText().toString();
+        String cityConverter = edBuscaCidade.getText().toString();
         final TextView lbLocalidade  = (TextView)findViewById(R.id.lbLocalidade);
         final TextView lbTemperaturaDia = (TextView)findViewById(R.id.lbTemperatura);
         final TextView lbMaxDia = (TextView)findViewById(R.id.lbMax);
@@ -61,11 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if (cidade.trim().isEmpty()) {
+        if (cityConverter.trim().isEmpty()) {
             Toast.makeText(this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
         } else {
 
-            final String recebe = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + cidade + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+            //replace
+            String cidade = cityConverter;
+            String city = cidade.replace(" ", "%20");
+
+            final String recebe = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
             Ion.with(this)
                     .load(recebe)
                     .asJsonObject()
@@ -73,20 +75,21 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onCompleted(Exception e, JsonObject result) {
                             if (e == null) {
-                                JsonObject object   = result.get("query").getAsJsonObject();
-                                JsonObject object1  = object.get("results").getAsJsonObject();
-                                JsonObject object2  = object1.get("channel").getAsJsonObject();
-                                JsonObject object3  = object2.get("location").getAsJsonObject();
-                                JsonObject object9  = object2.get("item").getAsJsonObject();
+                                JsonObject object = result.get("query").getAsJsonObject();
+                                JsonObject object1 = object.get("results").getAsJsonObject();
+                                JsonObject object2 = object1.get("channel").getAsJsonObject();
+                                JsonObject object3 = object2.get("location").getAsJsonObject();
+                                JsonObject object9 = object2.get("item").getAsJsonObject();
                                 JsonObject object10 = object9.get("condition").getAsJsonObject();
 
                                 //Local
-                                String[] local = {object3.get("city").getAsString().toString()," -",object3.get("region").getAsString().toString(),", ",object3.get("country").getAsString().toString()};
+                                String[] local = {object3.get("city").getAsString().toString(), " -", object3.get("region").getAsString().toString(), ", ", object3.get("country").getAsString().toString()};
                                 String resultadoLocal = "";
                                 for (int a = 0; a < local.length; a++) {
                                     resultadoLocal += local[a];
                                     lbLocalidade.setText(resultadoLocal);
                                 }
+                                //
 
 
                                 //percorrer os dias da semana
@@ -100,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     //Conversão
                                     DecimalFormat formato = new DecimalFormat("##");
-                                    Double converter  = Double.valueOf(object10.get("temp").getAsString());
+                                    Double converter = Double.valueOf(object10.get("temp").getAsString());
                                     Double converter1 = Double.valueOf(object11.get("high").getAsString());
                                     Double converter2 = Double.valueOf(object11.get("low").getAsString());
                                     Double converter3 = Double.valueOf(object12.get("low").getAsString());
@@ -110,43 +113,43 @@ public class MainActivity extends AppCompatActivity {
                                     Double converter7 = Double.valueOf(object14.get("low").getAsString());
                                     Double converter8 = Double.valueOf(object14.get("high").getAsString());
 
-                                    Double calcular   = (converter  - 32) /1.8;
-                                    Double calcular1  = (converter1 - 32) /1.8;
-                                    Double calcular2  = (converter2 - 32) /1.8;
-                                    Double calcular3  = (converter3 - 32) /1.8;
-                                    Double calcular4  = (converter4 - 32) /1.8;
-                                    Double calcular5  = (converter5 - 32) /1.8;
-                                    Double calcular6  = (converter6 - 32) /1.8;
-                                    Double calcular7  = (converter7 - 32) /1.8;
-                                    Double calcular8  = (converter8 - 32) /1.8;
+                                    Double calcular = (converter - 32) / 1.8;
+                                    Double calcular1 = (converter1 - 32) / 1.8;
+                                    Double calcular2 = (converter2 - 32) / 1.8;
+                                    Double calcular3 = (converter3 - 32) / 1.8;
+                                    Double calcular4 = (converter4 - 32) / 1.8;
+                                    Double calcular5 = (converter5 - 32) / 1.8;
+                                    Double calcular6 = (converter6 - 32) / 1.8;
+                                    Double calcular7 = (converter7 - 32) / 1.8;
+                                    Double calcular8 = (converter8 - 32) / 1.8;
                                     //
 
                                     //Temperatura, descrição do tempo do Dia
-                                    lbTemperaturaDia.setText(formato.format(calcular)+"ºc");
-                                    lbMaxDia.setText(formato.format(calcular1)+"º");
-                                    lbMinDia.setText(formato.format(calcular2)+"º");
+                                    lbTemperaturaDia.setText(formato.format(calcular) + "ºc");
+                                    lbMaxDia.setText(formato.format(calcular1) + "º");
+                                    lbMinDia.setText(formato.format(calcular2) + "º");
                                     lbDescDia.setText(object10.get("text").getAsString());
                                     //
 
                                     //Primeiro Dia
                                     lbDataSemana.setText(object12.get("date").getAsString());
                                     lbDiaSemana.setText(object12.get("day").getAsString());
-                                    lbMinSemana.setText(formato.format(calcular3)+"º");
-                                    lbMaxSemana.setText(formato.format(calcular4)+"º");
+                                    lbMinSemana.setText(formato.format(calcular3) + "º");
+                                    lbMaxSemana.setText(formato.format(calcular4) + "º");
                                     lbDescSemana.setText(object12.get("text").getAsString());
                                     //
                                     //Segundo Dia
                                     lbDataSemanaSeg.setText(object13.get("date").getAsString());
                                     lbDiaSemanaSeg.setText(object13.get("day").getAsString());
-                                    lbMinSemanaSeg.setText(formato.format(calcular5)+"º");
-                                    lbMaxSemanaSeg.setText(formato.format(calcular6)+"º");
+                                    lbMinSemanaSeg.setText(formato.format(calcular5) + "º");
+                                    lbMaxSemanaSeg.setText(formato.format(calcular6) + "º");
                                     lbDescSemanaSeg.setText(object13.get("text").getAsString());
                                     //
                                     //Terceiro Dia
                                     lbDataSemanaTer.setText(object14.get("date").getAsString());
                                     lbDiaSemanaTerc.setText(object14.get("day").getAsString());
-                                    lbMinSemanaTer.setText(formato.format(calcular7)+"º");
-                                    lbMaxSemanaTer.setText(formato.format(calcular8)+"º");
+                                    lbMinSemanaTer.setText(formato.format(calcular7) + "º");
+                                    lbMaxSemanaTer.setText(formato.format(calcular8) + "º");
                                     lbDescSemanaTer.setText(object14.get("text").getAsString());
                                     //
                                 }
@@ -155,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     });
+
         }
     }
 }
