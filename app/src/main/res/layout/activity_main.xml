@@ -15,14 +15,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <android.support.v7.widget.CardView
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cardView1"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="4dp"
             card_view:cardCornerRadius="4dp">
 
             <EditText
@@ -40,6 +43,7 @@
         </android.support.v7.widget.CardView>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -48,19 +52,24 @@
                 android:id="@+id/cardView2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="4dp"
                 card_view:cardCornerRadius="4dp">
 
                 <TextView
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:id="@+id/lbLocalidade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="26dp"
+                    android:textSize="22dp"
                     android:layout_gravity="left"
                     android:fontFamily="sans-serif-smallcaps"
                     android:text="City"/>
 
                 <LinearLayout
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:layout_marginTop="40dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,6 +99,9 @@
                 </LinearLayout>
 
                     <TextView
+
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
                         android:id="@+id/lbTemperatura"
                         android:layout_marginTop="68dp"
                         android:layout_width="wrap_content"
@@ -97,6 +109,9 @@
                         android:textSize="82dp"
                         android:text="0ºf"/>
                 <TextView
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
                     android:id="@+id/lbDescDia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,7 +137,6 @@
                     android:id="@+id/cardViewPrimeiro"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginBottom="5dp"
                     card_view:cardCornerRadius="4dp">
 
                     <LinearLayout
@@ -134,13 +148,15 @@
                             android:id="@+id/lbDataSemana"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18dp"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="16dp"
                             android:text="Dia "/>
                         <TextView
                             android:id="@+id/lbDiaSemana"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="14dp"
                             android:text="Semana" />
                     </LinearLayout>
 
@@ -152,6 +168,7 @@
                         android:text="Condição" />
 
                     <LinearLayout
+
                         android:gravity="center|right"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
@@ -159,20 +176,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:text="Max"/>
                         <TextView
                             android:id="@+id/lbMaxSemana"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:text="  Min" />
                         <TextView
                             android:id="@+id/lbMinSemana"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginRight="16dp"/>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
 
@@ -182,7 +204,6 @@
                     android:id="@+id/cardViewSegundo"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginBottom="5dp"
                     card_view:cardCornerRadius="4dp">
 
                     <LinearLayout
@@ -194,13 +215,15 @@
                             android:id="@+id/lbDataSemanaSeg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18dp"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="16dp"
                             android:text="Dia "/>
                         <TextView
                             android:id="@+id/lbDiaSemanaSeg"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="14dp"
                             android:text="Semana" />
                     </LinearLayout>
 
@@ -219,20 +242,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:text="Max"/>
                         <TextView
                             android:id="@+id/lbMaxSemanaSeg"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:text="  Min" />
                         <TextView
                             android:id="@+id/lbMinSemanaSeg"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginRight="16dp"/>
                     </LinearLayout>
 
 
@@ -245,7 +273,6 @@
                     android:id="@+id/cardViewSunday"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginBottom="5dp"
                     card_view:cardCornerRadius="4dp">
 
                     <LinearLayout
@@ -257,13 +284,15 @@
                             android:id="@+id/lbDataSemanaTer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="18dp"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="16dp"
                             android:text="Dia "/>
                         <TextView
                             android:id="@+id/lbDiaSemanaTer"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:textSize="14dp"
                             android:text="Semana" />
                     </LinearLayout>
 
@@ -282,20 +311,25 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:text="Max"/>
                         <TextView
                             android:id="@+id/lbMaxSemanaTer"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:textSize="12dp"
                             android:text="  Min" />
                         <TextView
                             android:id="@+id/lbMinSemanaTer"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:textSize="12dp"
+                            android:layout_marginRight="16dp"/>
                     </LinearLayout>
 
 
@@ -310,7 +344,6 @@
 
 
     </LinearLayout>
-
 
 
 </RelativeLayout>
