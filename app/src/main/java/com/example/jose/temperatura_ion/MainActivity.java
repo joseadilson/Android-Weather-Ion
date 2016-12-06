@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView lbDescSemana = (TextView)findViewById(R.id.lbDescSemana);
         final TextView lbDescSemanaSeg = (TextView)findViewById(R.id.lbDescSemanaSeg);
         final TextView lbDescSemanaTer = (TextView)findViewById(R.id.lbDescSemanaTer);
+
+        final ImageView vImage = (ImageView)findViewById(R.id.imageTempo);
 
 
 
@@ -129,6 +133,34 @@ public class MainActivity extends AppCompatActivity {
                                     lbMaxDia.setText(formato.format(calcular1) + "º");
                                     lbMinDia.setText(formato.format(calcular2) + "º");
                                     lbDescDia.setText(object10.get("text").getAsString());
+                                    //
+
+                                    //Imagens
+                                    String vImageSol = "https://s-media-cache-ak0.pinimg.com/236x/3d/f0/66/3df066f31d689257b22643d52b12aa38.jpg";
+                                    String vImageChuva = "https://image.freepik.com/freie-ikonen/regen-wolke-schlaganfall-wettersymbol_318-71123.jpg";
+                                    String vImageNublado = "http://www.clipartpal.com/_thumbs/pd/weather/04.png";
+
+                                    String climaTipo = object10.get("text").getAsString();
+                                    String tipodoCLima = climaTipo;
+                                    String tipoSol    = "mostly sunny";
+                                    String tipoChuva  = "thunderstorms";
+                                    String tipoNulado = "Cloudy";
+
+                                    if (tipodoCLima.toString() == tipoChuva.toString()) {
+                                        Picasso.with(getBaseContext())
+                                                .load(vImageChuva)
+                                                .into(vImage);
+                                    }
+                                    if (tipodoCLima.toString() == "\"Cloudy\""){
+                                        Picasso.with(getBaseContext())
+                                                .load(vImageNublado)
+                                                .into(vImage);
+                                    }
+                                    if (tipodoCLima.toString() == tipoSol.toString()) {
+                                        Picasso.with(getBaseContext())
+                                                .load(vImageSol)
+                                                .into(vImage);
+                                    }
                                     //
 
                                     //Primeiro Dia
