@@ -38,7 +38,7 @@
                 android:onClick="onClickBuscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Buscar"/>
+                android:text="Localizar"/>
 
         </android.support.v7.widget.CardView>
 
@@ -108,6 +108,12 @@
                         android:layout_height="wrap_content"
                         android:textSize="82dp"
                         android:text="0ºf"/>
+
+                <ImageView
+                    android:id="@+id/imageTempo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center|right"/>
                 <TextView
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="16dp"
