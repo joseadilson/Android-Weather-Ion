@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,6 +12,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         final TextView lbDescSemana = (TextView)findViewById(R.id.lbDescSemana);
         final TextView lbDescSemanaSeg = (TextView)findViewById(R.id.lbDescSemanaSeg);
         final TextView lbDescSemanaTer = (TextView)findViewById(R.id.lbDescSemanaTer);
+
+        final ImageView img = (ImageView) findViewById(R.id.img);
 
         if (cityConverter.trim().isEmpty()) {
             Toast.makeText(this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
@@ -107,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
                                     Double converter7 = Double.valueOf(object14.get("low").getAsString());
                                     Double converter8 = Double.valueOf(object14.get("high").getAsString());
 
+
+
                                     Double calcular = (converter - 32) / 1.8;
                                     Double calcular1 = (converter1 - 32) / 1.8;
                                     Double calcular2 = (converter2 - 32) / 1.8;
@@ -123,7 +129,26 @@ public class MainActivity extends AppCompatActivity {
                                     lbMaxDia.setText(formato.format(calcular1) + "º");
                                     lbMinDia.setText(formato.format(calcular2) + "º");
                                     lbDescDia.setText(object10.get("text").getAsString());
+
+                                    //Imagens
+                                    String vImageSol = "https://s-media-cache-ak0.pinimg.com/236x/3d/f0/66/3df066f31d689257b22643d52b12aa38.jpg";
+                                    String vImageChuva = "https://image.freepik.com/freie-ikonen/regen-wolke-schlaganfall-wettersymbol_318-71123.jpg";
+                                    String vImageNublado = "http://www.clipartpal.com/_thumbs/pd/weather/04.png";
+
+                                    String pegarNome = object10.get("text").getAsString();
+                                    String pegarImage = null;
+                                    if (pegarNome.toString().equals("Thunderstorms")) {
+                                        pegarImage = vImageChuva;
+                                    } if (pegarNome.toString().equals("mostly sunny")) {
+                                        pegarImage= vImageSol;
+                                    } if (pegarNome.toString().equals("Cloudy")) {
+                                        pegarImage = vImageNublado;
+                                    }
+                                    Picasso.with(getBaseContext())
+                                            .load(pegarImage)
+                                            .into(img);
                                     //
+
 
                                     //Primeiro Dia
                                     lbDataSemana.setText(object12.get("date").getAsString());
