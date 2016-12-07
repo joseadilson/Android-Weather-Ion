@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         edBuscaCidade = (EditText)findViewById(R.id.edBuscaCidade);
     }
 
@@ -65,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             //replace
             String cidade = cityConverter;
             String city = cidade.replace(" ", "%20");
+            //
 
             final String recebe = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
             Ion.with(this)
@@ -74,11 +74,11 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onCompleted(Exception e, JsonObject result) {
                             if (e == null) {
-                                JsonObject object = result.get("query").getAsJsonObject();
-                                JsonObject object1 = object.get("results").getAsJsonObject();
-                                JsonObject object2 = object1.get("channel").getAsJsonObject();
-                                JsonObject object3 = object2.get("location").getAsJsonObject();
-                                JsonObject object9 = object2.get("item").getAsJsonObject();
+                                JsonObject object   = result.get("query").getAsJsonObject();
+                                JsonObject object1  = object.get("results").getAsJsonObject();
+                                JsonObject object2  = object1.get("channel").getAsJsonObject();
+                                JsonObject object3  = object2.get("location").getAsJsonObject();
+                                JsonObject object9  = object2.get("item").getAsJsonObject();
                                 JsonObject object10 = object9.get("condition").getAsJsonObject();
 
                                 //Local
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                 //percorrer os dias da semana
                                 JsonArray jsonArray = object9.get("forecast").getAsJsonArray();
                                 for (int i = 0; i < jsonArray.size(); i++) {
-                                    JsonArray forecast = jsonArray.getAsJsonArray();
+                                    JsonArray forecast  = jsonArray.getAsJsonArray();
                                     JsonObject object11 = forecast.get(0).getAsJsonObject();
                                     JsonObject object12 = forecast.get(1).getAsJsonObject();
                                     JsonObject object13 = forecast.get(2).getAsJsonObject();
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     //Conversão
                                     DecimalFormat formato = new DecimalFormat("##");
-                                    Double converter = Double.valueOf(object10.get("temp").getAsString());
+                                    Double converter  = Double.valueOf(object10.get("temp").getAsString());
                                     Double converter1 = Double.valueOf(object11.get("high").getAsString());
                                     Double converter2 = Double.valueOf(object11.get("low").getAsString());
                                     Double converter3 = Double.valueOf(object12.get("low").getAsString());
@@ -111,9 +111,7 @@ public class MainActivity extends AppCompatActivity {
                                     Double converter7 = Double.valueOf(object14.get("low").getAsString());
                                     Double converter8 = Double.valueOf(object14.get("high").getAsString());
 
-
-
-                                    Double calcular = (converter - 32) / 1.8;
+                                    Double calcular  = (converter - 32) / 1.8;
                                     Double calcular1 = (converter1 - 32) / 1.8;
                                     Double calcular2 = (converter2 - 32) / 1.8;
                                     Double calcular3 = (converter3 - 32) / 1.8;
@@ -131,24 +129,42 @@ public class MainActivity extends AppCompatActivity {
                                     lbDescDia.setText(object10.get("text").getAsString());
 
                                     //Imagens
-                                    String vImageSol = "https://s-media-cache-ak0.pinimg.com/236x/3d/f0/66/3df066f31d689257b22643d52b12aa38.jpg";
-                                    String vImageChuva = "https://image.freepik.com/freie-ikonen/regen-wolke-schlaganfall-wettersymbol_318-71123.jpg";
-                                    String vImageNublado = "http://www.clipartpal.com/_thumbs/pd/weather/04.png";
+//                                    String vImageSol = "https://s-media-cache-ak0.pinimg.com/236x/3d/f0/66/3df066f31d689257b22643d52b12aa38.jpg";
+//                                    String vImageChuva = "https://image.freepik.com/freie-ikonen/regen-wolke-schlaganfall-wettersymbol_318-71123.jpg";
+//                                    String vImageNublado = "http://www.clipartpal.com/_thumbs/pd/weather/04.png";
 
-                                    String pegarNome = object10.get("text").getAsString();
+                                    String vImageTrovoada       = "http://blog.bloxxter.cz/wp-content/uploads/2016/01/thunderstorm-wear-icons-46090.png";
+                                    String vImageParNubado      = "http://iconshow.me/media/images/ui/ios7-icons/png/512/partlysunny.png";
+                                    String vImageParEnsolarado  = "http://english.onlinekhabar.com/wp-content/uploads/2016/05/partlysunny.png";
+                                    String vImageEnsolarado     = "http://static.tumblr.com/bf1be289a6f908d496e37b2765f8e0af/vl8wqgb/wJlmu3wka/tumblr_static_black_sun_with_rays_u2600_icon_256x256.png";
+                                    String vImageNublado        = "http://www.ionidea.com/contact/cloud.png";
+                                    String vImageVento          = "http://freevector.co/wp-content/uploads/2013/10/55939-wind-weather-lines-group-symbol.png";
+
+                                    String pegarNome  = object10.get("text").getAsString();
                                     String pegarImage = null;
                                     if (pegarNome.toString().equals("Thunderstorms")) {
-                                        pegarImage = vImageChuva;
-                                    } if (pegarNome.toString().equals("mostly sunny")) {
-                                        pegarImage= vImageSol;
+                                        pegarImage = vImageTrovoada;
+                                    } if (pegarNome.toString().equals("Scattered Thunderstorms")) {
+                                        pegarImage = vImageTrovoada;
+                                    } if (pegarNome.toString().equals("Partly Cloudy")) {
+                                        pegarImage= vImageParNubado;
+                                    } if (pegarNome.toString().equals("Mostly Cloudy")) {
+                                        pegarImage= vImageParNubado;
+                                    }if (pegarNome.toString().equals("Partly Sunny")) {
+                                        pegarImage = vImageParEnsolarado;
+                                    }if (pegarNome.toString().equals("Mostly Clear")) {
+                                        pegarImage = vImageParEnsolarado;
+                                    } if (pegarNome.toString().equals("Sunny")) {
+                                        pegarImage = vImageEnsolarado;
                                     } if (pegarNome.toString().equals("Cloudy")) {
                                         pegarImage = vImageNublado;
+                                    } if (pegarNome.toString().equals("Breezy")) {
+                                        pegarImage = vImageVento;
                                     }
                                     Picasso.with(getBaseContext())
                                             .load(pegarImage)
                                             .into(img);
                                     //
-
 
                                     //Primeiro Dia
                                     lbDataSemana.setText(object12.get("date").getAsString());
