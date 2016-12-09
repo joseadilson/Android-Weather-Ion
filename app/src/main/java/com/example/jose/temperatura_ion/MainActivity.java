@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pesquisaCidade();
+
     }
 
     public void pesquisaCidade() {
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                                 for (int a = 0; a < local.length; a++) {
                                     resultadoLocal += local[a];
 //                                    lbLocalidade.setText(resultadoLocal);
+                                    getSupportActionBar().setTitle(""+resultadoLocal);
                                 }
                                 //
 
