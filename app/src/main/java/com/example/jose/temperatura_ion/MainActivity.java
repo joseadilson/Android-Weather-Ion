@@ -1,6 +1,8 @@
 package com.example.jose.temperatura_ion;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -24,10 +26,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        edBuscaCidade = (EditText)findViewById(R.id.edBuscaCidade);
+
+        pesquisaCidade();
     }
 
-    public void onClickBuscar(View view) {
+    public void pesquisaCidade() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Digite a cidade");
+        builder.setMessage("Adicione a cidade");
+
+        edBuscaCidade = new EditText(MainActivity.this);
+        builder.setView(edBuscaCidade);
+
+        builder.setPositiveButton("Buscar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                requisicao();
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+
+    public void requisicao() {
         String cityConverter = edBuscaCidade.getText().toString();
         final TextView lbLocalidade  = (TextView)findViewById(R.id.lbLocalidade);
         final TextView lbTemperaturaDia = (TextView)findViewById(R.id.lbTemperatura);
@@ -58,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageView img = (ImageView) findViewById(R.id.img);
 
         if (cityConverter.trim().isEmpty()) {
-            Toast.makeText(this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
         } else {
 
             //replace
@@ -67,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             //
 
             final String recebe = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22" + city + "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
-            Ion.with(this)
+            Ion.with(MainActivity.this)
                     .load(recebe)
                     .asJsonObject()
                     .setCallback(new FutureCallback<JsonObject>() {
@@ -195,5 +223,9 @@ public class MainActivity extends AppCompatActivity {
                     });
 
         }
+    }
+
+    public void onClickBuscar(View view) {
+
     }
 }
