@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void requisicao() {
         String cityConverter = edBuscaCidade.getText().toString();
-        final TextView lbLocalidade  = (TextView)findViewById(R.id.lbLocalidade);
+//        final TextView lbLocalidade  = (TextView)findViewById(R.id.lbLocalidade);
         final TextView lbTemperaturaDia = (TextView)findViewById(R.id.lbTemperatura);
         final TextView lbMaxDia = (TextView)findViewById(R.id.lbMax);
         final TextView lbMinDia = (TextView)findViewById(R.id.lbMin);
@@ -79,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
         final TextView lbMaxSemanaSeg = (TextView)findViewById(R.id.lbMaxSemanaSeg);
         final TextView lbMaxSemanaTer = (TextView)findViewById(R.id.lbMaxSemanaTer);
 
-        final TextView lbDescSemana = (TextView)findViewById(R.id.lbDescSemana);
-        final TextView lbDescSemanaSeg = (TextView)findViewById(R.id.lbDescSemanaSeg);
-        final TextView lbDescSemanaTer = (TextView)findViewById(R.id.lbDescSemanaTer);
+//        final TextView lbDescSemana = (TextView)findViewById(R.id.lbDescSemana);
+//        final TextView lbDescSemanaSeg = (TextView)findViewById(R.id.lbDescSemanaSeg);
+//        final TextView lbDescSemanaTer = (TextView)findViewById(R.id.lbDescSemanaTer);
 
         final ImageView img = (ImageView) findViewById(R.id.img);
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                                 String resultadoLocal = "";
                                 for (int a = 0; a < local.length; a++) {
                                     resultadoLocal += local[a];
-                                    lbLocalidade.setText(resultadoLocal);
+//                                    lbLocalidade.setText(resultadoLocal);
                                 }
                                 //
 
@@ -199,21 +199,21 @@ public class MainActivity extends AppCompatActivity {
                                     lbDiaSemana.setText(object12.get("day").getAsString());
                                     lbMinSemana.setText(formato.format(calcular3) + "º");
                                     lbMaxSemana.setText(formato.format(calcular4) + "º");
-                                    lbDescSemana.setText(object12.get("text").getAsString());
+//                                    lbDescSemana.setText(object12.get("text").getAsString());
                                     //
                                     //Segundo Dia
                                     lbDataSemanaSeg.setText(object13.get("date").getAsString());
                                     lbDiaSemanaSeg.setText(object13.get("day").getAsString());
                                     lbMinSemanaSeg.setText(formato.format(calcular5) + "º");
                                     lbMaxSemanaSeg.setText(formato.format(calcular6) + "º");
-                                    lbDescSemanaSeg.setText(object13.get("text").getAsString());
+//                                    lbDescSemanaSeg.setText(object13.get("text").getAsString());
                                     //
                                     //Terceiro Dia
                                     lbDataSemanaTer.setText(object14.get("date").getAsString());
                                     lbDiaSemanaTerc.setText(object14.get("day").getAsString());
                                     lbMinSemanaTer.setText(formato.format(calcular7) + "º");
                                     lbMaxSemanaTer.setText(formato.format(calcular8) + "º");
-                                    lbDescSemanaTer.setText(object14.get("text").getAsString());
+//                                    lbDescSemanaTer.setText(object14.get("text").getAsString());
                                     //
                                 }
                             } else {
