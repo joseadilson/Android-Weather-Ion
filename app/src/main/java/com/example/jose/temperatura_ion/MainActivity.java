@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("Digite a cidade");
-        builder.setMessage("Adicione a cidade");
+        builder.setMessage("Encontre a cidade");
 
         edBuscaCidade = new EditText(MainActivity.this);
         builder.setView(edBuscaCidade);
@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
 //        final TextView lbDescSemanaTer = (TextView)findViewById(R.id.lbDescSemanaTer);
 
         final ImageView img = (ImageView) findViewById(R.id.img);
+        final ImageView img1 = (ImageView)findViewById(R.id.img1);
+        final ImageView img2 = (ImageView)findViewById(R.id.img2);
+        final ImageView img3 = (ImageView)findViewById(R.id.img3);
 
         if (cityConverter.trim().isEmpty()) {
             Toast.makeText(MainActivity.this, "Preencha o campo Cidade", Toast.LENGTH_SHORT).show();
@@ -215,6 +218,15 @@ public class MainActivity extends AppCompatActivity {
                                     Picasso.with(getBaseContext())
                                             .load(pegarImage)
                                             .into(img);
+                                    Picasso.with(getBaseContext())
+                                            .load(pegarImage)
+                                            .into(img1);
+                                    Picasso.with(getBaseContext())
+                                            .load(pegarImage)
+                                            .into(img2);
+                                    Picasso.with(getBaseContext())
+                                            .load(pegarImage)
+                                            .into(img3);
                                     //
 
                                     //Primeiro Dia
