@@ -4,7 +4,9 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +30,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         pesquisaCidade();
+        getSupportActionBar().setTitle("");
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_city, menu);
+        return true;
+    }
+
+    public void menuCliqueExcluir(MenuItem item) {
+        pesquisaCidade();
     }
 
     public void pesquisaCidade() {
@@ -55,30 +69,29 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-
     public void requisicao() {
         String cityConverter = edBuscaCidade.getText().toString();
 //        final TextView lbLocalidade  = (TextView)findViewById(R.id.lbLocalidade);
-        final TextView lbTemperaturaDia = (TextView)findViewById(R.id.lbTemperatura);
-        final TextView lbMaxDia = (TextView)findViewById(R.id.lbMax);
-        final TextView lbMinDia = (TextView)findViewById(R.id.lbMin);
-        final TextView lbDescDia = (TextView)findViewById(R.id.lbDescDia);
+        final TextView lbTemperaturaDia = (TextView) findViewById(R.id.lbTemperatura);
+        final TextView lbMaxDia = (TextView) findViewById(R.id.lbMax);
+        final TextView lbMinDia = (TextView) findViewById(R.id.lbMin);
+        final TextView lbDescDia = (TextView) findViewById(R.id.lbDescDia);
 
-        final TextView lbDataSemana = (TextView)findViewById(R.id.lbDataSemana);
-        final TextView lbDataSemanaSeg = (TextView)findViewById(R.id.lbDataSemanaSeg);
-        final TextView lbDataSemanaTer = (TextView)findViewById(R.id.lbDataSemanaTer);
+        final TextView lbDataSemana = (TextView) findViewById(R.id.lbDataSemana);
+        final TextView lbDataSemanaSeg = (TextView) findViewById(R.id.lbDataSemanaSeg);
+        final TextView lbDataSemanaTer = (TextView) findViewById(R.id.lbDataSemanaTer);
 
-        final TextView lbDiaSemana = (TextView)findViewById(R.id.lbDiaSemana);
-        final TextView lbDiaSemanaSeg = (TextView)findViewById(R.id.lbDiaSemanaSeg);
-        final TextView lbDiaSemanaTerc = (TextView)findViewById(R.id.lbDiaSemanaTer);
+        final TextView lbDiaSemana = (TextView) findViewById(R.id.lbDiaSemana);
+        final TextView lbDiaSemanaSeg = (TextView) findViewById(R.id.lbDiaSemanaSeg);
+        final TextView lbDiaSemanaTerc = (TextView) findViewById(R.id.lbDiaSemanaTer);
 
-        final TextView lbMinSemana = (TextView)findViewById(R.id.lbMinSemana);
-        final TextView lbMinSemanaSeg = (TextView)findViewById(R.id.lbMinSemanaSeg);
-        final TextView lbMinSemanaTer = (TextView)findViewById(R.id.lbMinSemanaTer);
+        final TextView lbMinSemana = (TextView) findViewById(R.id.lbMinSemana);
+        final TextView lbMinSemanaSeg = (TextView) findViewById(R.id.lbMinSemanaSeg);
+        final TextView lbMinSemanaTer = (TextView) findViewById(R.id.lbMinSemanaTer);
 
-        final TextView lbMaxSemana = (TextView)findViewById(R.id.lbMaxSemana);
-        final TextView lbMaxSemanaSeg = (TextView)findViewById(R.id.lbMaxSemanaSeg);
-        final TextView lbMaxSemanaTer = (TextView)findViewById(R.id.lbMaxSemanaTer);
+        final TextView lbMaxSemana = (TextView) findViewById(R.id.lbMaxSemana);
+        final TextView lbMaxSemanaSeg = (TextView) findViewById(R.id.lbMaxSemanaSeg);
+        final TextView lbMaxSemanaTer = (TextView) findViewById(R.id.lbMaxSemanaTer);
 
 //        final TextView lbDescSemana = (TextView)findViewById(R.id.lbDescSemana);
 //        final TextView lbDescSemanaSeg = (TextView)findViewById(R.id.lbDescSemanaSeg);
@@ -103,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onCompleted(Exception e, JsonObject result) {
                             if (e == null) {
-                                JsonObject object   = result.get("query").getAsJsonObject();
-                                JsonObject object1  = object.get("results").getAsJsonObject();
-                                JsonObject object2  = object1.get("channel").getAsJsonObject();
-                                JsonObject object3  = object2.get("location").getAsJsonObject();
-                                JsonObject object9  = object2.get("item").getAsJsonObject();
+                                JsonObject object = result.get("query").getAsJsonObject();
+                                JsonObject object1 = object.get("results").getAsJsonObject();
+                                JsonObject object2 = object1.get("channel").getAsJsonObject();
+                                JsonObject object3 = object2.get("location").getAsJsonObject();
+                                JsonObject object9 = object2.get("item").getAsJsonObject();
                                 JsonObject object10 = object9.get("condition").getAsJsonObject();
 
                                 //Local
@@ -116,14 +129,14 @@ public class MainActivity extends AppCompatActivity {
                                 for (int a = 0; a < local.length; a++) {
                                     resultadoLocal += local[a];
 //                                    lbLocalidade.setText(resultadoLocal);
-                                    getSupportActionBar().setTitle(""+resultadoLocal);
+                                    getSupportActionBar().setTitle("" + resultadoLocal);
                                 }
                                 //
 
                                 //percorrer os dias da semana
                                 JsonArray jsonArray = object9.get("forecast").getAsJsonArray();
                                 for (int i = 0; i < jsonArray.size(); i++) {
-                                    JsonArray forecast  = jsonArray.getAsJsonArray();
+                                    JsonArray forecast = jsonArray.getAsJsonArray();
                                     JsonObject object11 = forecast.get(0).getAsJsonObject();
                                     JsonObject object12 = forecast.get(1).getAsJsonObject();
                                     JsonObject object13 = forecast.get(2).getAsJsonObject();
@@ -131,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     //Conversão
                                     DecimalFormat formato = new DecimalFormat("##");
-                                    Double converter  = Double.valueOf(object10.get("temp").getAsString());
+                                    Double converter = Double.valueOf(object10.get("temp").getAsString());
                                     Double converter1 = Double.valueOf(object11.get("high").getAsString());
                                     Double converter2 = Double.valueOf(object11.get("low").getAsString());
                                     Double converter3 = Double.valueOf(object12.get("low").getAsString());
@@ -141,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                                     Double converter7 = Double.valueOf(object14.get("low").getAsString());
                                     Double converter8 = Double.valueOf(object14.get("high").getAsString());
 
-                                    Double calcular  = (converter - 32) / 1.8;
+                                    Double calcular = (converter - 32) / 1.8;
                                     Double calcular1 = (converter1 - 32) / 1.8;
                                     Double calcular2 = (converter2 - 32) / 1.8;
                                     Double calcular3 = (converter3 - 32) / 1.8;
@@ -163,32 +176,40 @@ public class MainActivity extends AppCompatActivity {
 //                                    String vImageChuva = "https://image.freepik.com/freie-ikonen/regen-wolke-schlaganfall-wettersymbol_318-71123.jpg";
 //                                    String vImageNublado = "http://www.clipartpal.com/_thumbs/pd/weather/04.png";
 
-                                    String vImageTrovoada       = "http://blog.bloxxter.cz/wp-content/uploads/2016/01/thunderstorm-wear-icons-46090.png";
-                                    String vImageParNubado      = "http://iconshow.me/media/images/ui/ios7-icons/png/512/partlysunny.png";
-                                    String vImageParEnsolarado  = "http://english.onlinekhabar.com/wp-content/uploads/2016/05/partlysunny.png";
-                                    String vImageEnsolarado     = "http://static.tumblr.com/bf1be289a6f908d496e37b2765f8e0af/vl8wqgb/wJlmu3wka/tumblr_static_black_sun_with_rays_u2600_icon_256x256.png";
-                                    String vImageNublado        = "http://www.ionidea.com/contact/cloud.png";
-                                    String vImageVento          = "http://freevector.co/wp-content/uploads/2013/10/55939-wind-weather-lines-group-symbol.png";
+                                    String vImageTrovoada = "http://blog.bloxxter.cz/wp-content/uploads/2016/01/thunderstorm-wear-icons-46090.png";
+                                    String vImageParNubado = "http://iconshow.me/media/images/ui/ios7-icons/png/512/partlysunny.png";
+                                    String vImageParEnsolarado = "http://english.onlinekhabar.com/wp-content/uploads/2016/05/partlysunny.png";
+                                    String vImageEnsolarado = "http://static.tumblr.com/bf1be289a6f908d496e37b2765f8e0af/vl8wqgb/wJlmu3wka/tumblr_static_black_sun_with_rays_u2600_icon_256x256.png";
+                                    String vImageNublado = "http://www.ionidea.com/contact/cloud.png";
+                                    String vImageVento = "http://freevector.co/wp-content/uploads/2013/10/55939-wind-weather-lines-group-symbol.png";
 
-                                    String pegarNome  = object10.get("text").getAsString();
+                                    String pegarNome = object10.get("text").getAsString();
                                     String pegarImage = null;
                                     if (pegarNome.toString().equals("Thunderstorms")) {
                                         pegarImage = vImageTrovoada;
-                                    } if (pegarNome.toString().equals("Scattered Thunderstorms")) {
+                                    }
+                                    if (pegarNome.toString().equals("Scattered Thunderstorms")) {
                                         pegarImage = vImageTrovoada;
-                                    } if (pegarNome.toString().equals("Partly Cloudy")) {
-                                        pegarImage= vImageParNubado;
-                                    } if (pegarNome.toString().equals("Mostly Cloudy")) {
-                                        pegarImage= vImageParNubado;
-                                    }if (pegarNome.toString().equals("Partly Sunny")) {
+                                    }
+                                    if (pegarNome.toString().equals("Partly Cloudy")) {
+                                        pegarImage = vImageParNubado;
+                                    }
+                                    if (pegarNome.toString().equals("Mostly Cloudy")) {
+                                        pegarImage = vImageParNubado;
+                                    }
+                                    if (pegarNome.toString().equals("Partly Sunny")) {
                                         pegarImage = vImageParEnsolarado;
-                                    }if (pegarNome.toString().equals("Mostly Clear")) {
+                                    }
+                                    if (pegarNome.toString().equals("Mostly Clear")) {
                                         pegarImage = vImageParEnsolarado;
-                                    } if (pegarNome.toString().equals("Sunny")) {
+                                    }
+                                    if (pegarNome.toString().equals("Sunny")) {
                                         pegarImage = vImageEnsolarado;
-                                    } if (pegarNome.toString().equals("Cloudy")) {
+                                    }
+                                    if (pegarNome.toString().equals("Cloudy")) {
                                         pegarImage = vImageNublado;
-                                    } if (pegarNome.toString().equals("Breezy")) {
+                                    }
+                                    if (pegarNome.toString().equals("Breezy")) {
                                         pegarImage = vImageVento;
                                     }
                                     Picasso.with(getBaseContext())
@@ -225,9 +246,5 @@ public class MainActivity extends AppCompatActivity {
                     });
 
         }
-    }
-
-    public void onClickBuscar(View view) {
-
     }
 }

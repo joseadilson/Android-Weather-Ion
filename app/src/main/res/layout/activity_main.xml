@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -50,18 +49,6 @@
                     android:layout_height="128dp"
                     android:layout_gravity="top|left"/>
 
-                <!--<TextView-->
-                    <!--android:layout_marginTop="16dp"-->
-                    <!--android:layout_marginLeft="16dp"-->
-                    <!--android:layout_marginRight="16dp"-->
-                    <!--android:id="@+id/lbLocalidade"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:textSize="22dp"-->
-                    <!--android:layout_gravity="left"-->
-                    <!--android:fontFamily="sans-serif-smallcaps"-->
-                    <!--android:text="City"/>-->
-
                 <LinearLayout
                     android:layout_gravity="center"
                     android:gravity="right"
@@ -95,15 +82,15 @@
                 </LinearLayout>
 
                 <TextView
-                        android:layout_gravity="bottom"
-                        android:gravity="right"
-                        android:id="@+id/lbTemperatura"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginRight="16dp"
-                        android:textSize="80dp"
-                        android:text="0ºf"/>
+                    android:layout_gravity="bottom"
+                    android:gravity="right"
+                    android:id="@+id/lbTemperatura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:textSize="80dp"
+                    android:text="0ºf"/>
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -209,11 +196,11 @@
                     </LinearLayout>
 
                     <!--<TextView-->
-                        <!--android:id="@+id/lbDescSemanaSeg"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:text="Condição" />-->
+                    <!--android:id="@+id/lbDescSemanaSeg"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:text="Condição" />-->
 
                     <LinearLayout
                         android:gravity="center|right"
@@ -279,11 +266,11 @@
                     </LinearLayout>
 
                     <!--<TextView-->
-                        <!--android:id="@+id/lbDescSemanaTer"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center"-->
-                        <!--android:text="Condição" />-->
+                    <!--android:id="@+id/lbDescSemanaTer"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:text="Condição" />-->
 
                     <LinearLayout
                         android:gravity="center|right"
@@ -314,18 +301,12 @@
                             android:layout_marginRight="16dp"/>
                     </LinearLayout>
 
-
-
                 </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
         </ScrollView>
 
-
-
-
     </LinearLayout>
-
 
 </RelativeLayout>
