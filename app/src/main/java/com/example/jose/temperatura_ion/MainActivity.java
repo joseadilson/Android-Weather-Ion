@@ -175,10 +175,6 @@ public class MainActivity extends AppCompatActivity {
                                     lbDescDia.setText(object10.get("text").getAsString());
 
                                     //Imagens
-//                                    String vImageSol = "https://s-media-cache-ak0.pinimg.com/236x/3d/f0/66/3df066f31d689257b22643d52b12aa38.jpg";
-//                                    String vImageChuva = "https://image.freepik.com/freie-ikonen/regen-wolke-schlaganfall-wettersymbol_318-71123.jpg";
-//                                    String vImageNublado = "http://www.clipartpal.com/_thumbs/pd/weather/04.png";
-
                                     String vImageTrovoada = "http://blog.bloxxter.cz/wp-content/uploads/2016/01/thunderstorm-wear-icons-46090.png";
                                     String vImageParNubado = "http://iconshow.me/media/images/ui/ios7-icons/png/512/partlysunny.png";
                                     String vImageParEnsolarado = "http://english.onlinekhabar.com/wp-content/uploads/2016/05/partlysunny.png";
@@ -234,22 +230,19 @@ public class MainActivity extends AppCompatActivity {
                                     lbDiaSemana.setText(object12.get("day").getAsString());
                                     lbMinSemana.setText(formato.format(calcular3) + "º");
                                     lbMaxSemana.setText(formato.format(calcular4) + "º");
-//                                    lbDescSemana.setText(object12.get("text").getAsString());
-                                    //
+
                                     //Segundo Dia
                                     lbDataSemanaSeg.setText(object13.get("date").getAsString());
                                     lbDiaSemanaSeg.setText(object13.get("day").getAsString());
                                     lbMinSemanaSeg.setText(formato.format(calcular5) + "º");
                                     lbMaxSemanaSeg.setText(formato.format(calcular6) + "º");
-//                                    lbDescSemanaSeg.setText(object13.get("text").getAsString());
-                                    //
+
                                     //Terceiro Dia
                                     lbDataSemanaTer.setText(object14.get("date").getAsString());
                                     lbDiaSemanaTerc.setText(object14.get("day").getAsString());
                                     lbMinSemanaTer.setText(formato.format(calcular7) + "º");
                                     lbMaxSemanaTer.setText(formato.format(calcular8) + "º");
-//                                    lbDescSemanaTer.setText(object14.get("text").getAsString());
-                                    //
+
                                 }
                             } else {
                                 Toast.makeText(MainActivity.this, "ERRO: " + e, Toast.LENGTH_SHORT).show();
