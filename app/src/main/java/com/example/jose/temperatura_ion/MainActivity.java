@@ -17,7 +17,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 
@@ -190,9 +189,9 @@ public class MainActivity extends AppCompatActivity {
                                         pegarImage = vImageTrovoada;
                                     }if (pegarNome.toString().equals("Scattered Thunderstorms")) {
                                         pegarImage = vImageTrovoada;
-                                    }if (pegarNome.toString().equals("Partly Cloudy")) {
+                                    }if (pegarNome.toString().equals("Partly Cloudy")){
                                         pegarImage = vImageParNubado;
-                                    }if (pegarNome.toString().equals("Mostly Cloudy")) {
+                                    }if (pegarNome.toString().equals("Mostly Cloudy")){
                                         pegarImage = vImageParNubado;
                                     }if (pegarNome.toString().equals("Partly Sunny")) {
                                         pegarImage = vImageParEnsolarado;
@@ -205,18 +204,18 @@ public class MainActivity extends AppCompatActivity {
                                     }if (pegarNome.toString().equals("Breezy")) {
                                         pegarImage = vImageVento;
                                     }
-                                    Picasso.with(getBaseContext())
-                                            .load(pegarImage)
-                                            .into(img);
-                                    Picasso.with(getBaseContext())
-                                            .load(pegarImage)
-                                            .into(img1);
-                                    Picasso.with(getBaseContext())
-                                            .load(pegarImage)
-                                            .into(img2);
-                                    Picasso.with(getBaseContext())
-                                            .load(pegarImage)
-                                            .into(img3);
+//                                    Picasso.with(getBaseContext())
+//                                            .load(pegarImage)
+//                                            .into(img);
+//                                    Picasso.with(getBaseContext())
+//                                            .load(pegarImage)
+//                                            .into(img1);
+//                                    Picasso.with(getBaseContext())
+//                                            .load(pegarImage)
+//                                            .into(img2);
+//                                    Picasso.with(getBaseContext())
+//                                            .load(pegarImage)
+//                                            .into(img3);
                                     //
 
                                     //Primeiro Dia
