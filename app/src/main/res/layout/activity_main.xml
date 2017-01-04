@@ -39,6 +39,7 @@
                     android:layout_marginRight="16dp"
                     android:layout_marginTop="16dp"
                     android:id="@+id/lbDescDia"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-smallcaps"
@@ -49,50 +50,17 @@
                     android:layout_marginTop="25dp"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
-                    android:layout_gravity="top|left"/>
+                    android:layout_gravity="top|center"/>
 
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_gravity="left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Max "/>
-                    <TextView
-                        android:id="@+id/lbMax"
-                        android:layout_gravity="left"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-
-                    <TextView
-                        android:layout_marginLeft="40dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Min "/>
-                    <TextView
-                        android:id="@+id/lbMin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
 
                 <TextView
-                    android:layout_gravity="bottom"
-                    android:gravity="right"
                     android:id="@+id/lbTemperatura"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_gravity="bottom"
+                    android:gravity="center"
                     android:textSize="80dp"
-                    android:text="0ºf"/>
+                    android:text="0"/>
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
@@ -102,8 +70,7 @@
             android:layout_weight="0.6"
             android:layout_height="0dp">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -111,219 +78,19 @@
                     xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/cardViewPrimeiro"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     card_view:cardCornerRadius="4dp">
 
-                    <LinearLayout
-                        android:gravity="left|center"
-                        android:orientation="vertical"
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:id="@+id/lbDataSemana"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="16dp"
-                            android:text="Dia "/>
-                        <TextView
-                            android:id="@+id/lbDiaSemana"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="14dp"
-                            android:text="Semana" />
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/img1"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_gravity="center"/>
-
-
-                    <LinearLayout
-                        android:gravity="center|right"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:text="Max"/>
-                        <TextView
-                            android:id="@+id/lbMaxSemana"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:text="  Min" />
-                        <TextView
-                            android:id="@+id/lbMinSemana"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:layout_marginRight="16dp"/>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
-
-                <!--2-->
-                <android.support.v7.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/cardViewSegundo"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="2dp"
-                    card_view:cardCornerRadius="4dp">
-
-                    <LinearLayout
-                        android:gravity="left|center"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:id="@+id/lbDataSemanaSeg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="16dp"
-                            android:text="Dia "/>
-                        <TextView
-                            android:id="@+id/lbDiaSemanaSeg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="14dp"
-                            android:text="Semana" />
-                    </LinearLayout>
-
-                    <!--<TextView-->
-                    <!--android:id="@+id/lbDescSemanaSeg"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:text="Condição" />-->
-
-                    <ImageView
-                        android:id="@+id/img2"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_gravity="center"/>
-
-                    <LinearLayout
-                        android:gravity="center|right"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:text="Max"/>
-                        <TextView
-                            android:id="@+id/lbMaxSemanaSeg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:text="  Min" />
-                        <TextView
-                            android:id="@+id/lbMinSemanaSeg"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:layout_marginRight="16dp"/>
-                    </LinearLayout>
-
-
+                        android:layout_height="match_parent"
+                        android:scrollbars="vertical"/>
 
                 </android.support.v7.widget.CardView>
 
-                <!--2-->
-                <android.support.v7.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/cardViewSunday"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginBottom="2dp"
-                    card_view:cardCornerRadius="4dp">
-
-                    <LinearLayout
-                        android:gravity="left|center"
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:id="@+id/lbDataSemanaTer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="16dp"
-                            android:text="Dia "/>
-                        <TextView
-                            android:id="@+id/lbDiaSemanaTer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
-                            android:textSize="14dp"
-                            android:text="Semana" />
-                    </LinearLayout>
-
-                    <!--<TextView-->
-                    <!--android:id="@+id/lbDescSemanaTer"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:text="Condição" />-->
-
-                    <ImageView
-                        android:id="@+id/img3"
-                        android:layout_width="45dp"
-                        android:layout_height="45dp"
-                        android:layout_gravity="center"/>
-
-                    <LinearLayout
-                        android:gravity="center|right"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:text="Max"/>
-                        <TextView
-                            android:id="@+id/lbMaxSemanaTer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:text="  Min" />
-                        <TextView
-                            android:id="@+id/lbMinSemanaTer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:layout_marginRight="16dp"/>
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-            </LinearLayout>
+            </RelativeLayout>
 
         </ScrollView>
 
