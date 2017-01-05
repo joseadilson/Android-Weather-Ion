@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     //
 
-                                    //percorrer os dias da semana
+                                    //dia
                                     JsonArray jsonArray = object9.get("forecast").getAsJsonArray();
                                     for (int i = 0; i < jsonArray.size(); i++) {
                                         JsonArray forecast = jsonArray.getAsJsonArray();
@@ -147,13 +147,11 @@ public class MainActivity extends AppCompatActivity {
                                         //Temperatura, descrição do tempo do Dia
                                         lbTemperaturaDia.setText(formato.format(calcular) + "ºc");
                                         lbDescDia.setText(object10.get("text").getAsString());
-
-
-
                                 }
                                     //Semana Toda//
-                                    for (int z = 0; z < jsonArray.size(); z++) {
-                                        JsonArray array = jsonArray.getAsJsonArray();
+                                    JsonArray arrayA = object9.get("forecast").getAsJsonArray();
+                                    for (int z = 0; z < arrayA.size(); z++) {
+                                        JsonArray array = arrayA.getAsJsonArray();
                                         JsonObject objectSemana = array.get(z).getAsJsonObject();
 
                                         DecimalFormat formato = new DecimalFormat("##");
@@ -183,4 +181,5 @@ public class MainActivity extends AppCompatActivity {
                     });
         }
     }
+
 }
