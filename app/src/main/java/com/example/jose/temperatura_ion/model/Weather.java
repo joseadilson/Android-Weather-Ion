@@ -1,4 +1,4 @@
-package com.example.jose.temperatura_ion.dominio;
+package com.example.jose.temperatura_ion.model;
 
 /**
  * Created by Jose on 04/01/2017.

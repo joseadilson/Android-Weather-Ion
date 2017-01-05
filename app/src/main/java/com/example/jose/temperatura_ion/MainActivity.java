@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jose.temperatura_ion.adapter.WeatherAdapter;
-import com.example.jose.temperatura_ion.dominio.Weather;
+import com.example.jose.temperatura_ion.model.Weather;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
                                         //Temperatura, descrição do tempo do Dia
                                         lbTemperaturaDia.setText(formato.format(calcular) + "ºc");
                                         lbDescDia.setText(object10.get("text").getAsString());
+
+
+
                                 }
                                     //Semana Toda//
                                     for (int z = 0; z < jsonArray.size(); z++) {
@@ -165,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                                         String low  = formato.format(calcularMin);
                                         String text = objectSemana.get("text").getAsString();
 
-                                        Weather weather = new Weather(date.toString(), day.toString(), high.toString(), low.toString(), text.toString());
+                                        Weather weather = new Weather(date.toString(), day.toString(), high.toString()+" ↑", low.toString()+" ↓", text.toString());
                                         weatherList.add(weather);
                                         weatherAdapter.notifyDataSetChanged();
                                     }
@@ -173,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
                                 }catch (Exception e1){
                                     Toast.makeText(MainActivity.this, "City not found", Toast.LENGTH_SHORT).show();
                                 }
+
+
                             }
                         }
                     });

@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.jose.temperatura_ion.R;
-import com.example.jose.temperatura_ion.dominio.Weather;
+import com.example.jose.temperatura_ion.model.Weather;
 
 import java.util.List;
 
