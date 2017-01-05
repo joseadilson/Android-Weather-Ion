@@ -1,9 +1,8 @@
 package com.example.jose.temperatura_ion;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,11 +28,13 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText edBuscaCidade;
+//    EditText edBuscaCidade;
     private ProgressDialog progressDialog;
 
     private List<Weather> weatherList = new ArrayList<>();
     private WeatherAdapter weatherAdapter;
+
+    String cidadePesq;
 
 
     @Override
@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pesquisaCidade();
+        cidadePesq = getIntent().getStringExtra("NOME_CIDADE");
         getSupportActionBar().setTitle("");
+        requisicao();
     }
 
     @Override
@@ -59,30 +60,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void pesquisaCidade() {
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Digite a cidade");
-        builder.setMessage("Encontre a cidade");
+        startActivity(new Intent(this, PesquisarCidadeActivity.class));
 
-        edBuscaCidade = new EditText(MainActivity.this);
-        builder.setView(edBuscaCidade);
 
-        builder.setPositiveButton("Buscar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                requisicao();
-            }
-        });
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.show();
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//        builder.setTitle("Digite a cidade");
+//        builder.setMessage("Encontre a cidade");
+//
+//        edBuscaCidade = new EditText(MainActivity.this);
+//        builder.setView(edBuscaCidade);
+//
+//        builder.setPositiveButton("Buscar", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                requisicao();
+//            }
+//        });
+//        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
+//        builder.show();
     }
 
     public void requisicao() {
-        String cityConverter = edBuscaCidade.getText().toString();
+//        String cityConverter = edBuscaCidade.getText().toString();
+        String cityConverter = cidadePesq.toString();
         RecyclerView rv = (RecyclerView)findViewById(R.id.recycler_view);
 
         weatherAdapter = new WeatherAdapter(weatherList);
@@ -147,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
                                         //Temperatura, descrição do tempo do Dia
                                         lbTemperaturaDia.setText(formato.format(calcular) + "ºc");
                                         lbDescDia.setText(object10.get("text").getAsString());
+
                                 }
                                     //Semana Toda//
                                     JsonArray arrayA = object9.get("forecast").getAsJsonArray();
