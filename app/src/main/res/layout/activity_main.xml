@@ -45,7 +45,6 @@
 
                 <ImageView
                     android:id="@+id/img"
-                    android:src="@drawable/nube"
                     android:layout_marginTop="25dp"
                     android:layout_width="128dp"
                     android:layout_height="128dp"
